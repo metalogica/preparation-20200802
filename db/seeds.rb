@@ -5,20 +5,20 @@ User.destroy_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!(:restaurants)
 
-50.times do
-    user = User.create(email: Faker::Internet.email, password: 'qwerty')
-    10.times do
-      resto = Restaurant.create(
-      name: Faker::Restaurant.name,
-      address: Faker::Address.street_address,
-      user_id: user.id
-    )
-  
-    Comment.create(
-      content: Faker::Restaurant.review,
-      restaurant_id: resto.id,
-      user_id: user.id
-    )
-    end
+5.times do
+  user = User.create(email: Faker::Internet.email, password: 'qwerty')
+  10.times do
+    resto = Restaurant.create(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.street_address,
+    user_id: user.id
+  )
+
+  Comment.create(
+    content: Faker::Restaurant.review,
+    restaurant_id: resto.id,
+    user_id: user.id
+  )
   end
-  puts 'seed ended'
+end
+puts 'seed ended'
