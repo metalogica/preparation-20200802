@@ -3,4 +3,10 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
         #               Restaurant.all
         @restaurants = policy_scope(Restaurant)
     end
+
+    def show
+        @restaurant = Restaurant.find(params[:id])
+        authorize @restaurant
+        render :show
+    end
 end
