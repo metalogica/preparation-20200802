@@ -24,4 +24,10 @@ class RestaurantPolicy < ApplicationPolicy
     user.present?
     # current_user.present?
   end
+
+  def destroy?
+    # only users that created the restaurant can delete it
+    update?
+    # record.user == user
+  end
 end

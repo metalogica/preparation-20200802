@@ -29,6 +29,13 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
         end
     end
 
+    def destroy
+        @restaurant = Restaurant.find(params[:id])
+        authorize @restaurant
+        @restaurant.destroy!
+        head :no_content # 204
+    end
+
     private
 
     def set_restaurant
