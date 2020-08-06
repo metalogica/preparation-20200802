@@ -12,4 +12,10 @@ class RestaurantPolicy < ApplicationPolicy
      # return value: Boolean
      true
   end
+
+  def update?
+    # only users that own the restaurant can update it
+    record.user == user
+    # @restaurant.user == user
+  end
 end
