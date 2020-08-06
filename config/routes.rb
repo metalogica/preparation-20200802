@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     # /api/v1
     namespace :v1 do
       # /api/v1/restaurants
-      resources :restaurants, only: [ :index, :show ]
+      resources :restaurants, only: [ :index, :show, :update ]
     end
   end
 end
