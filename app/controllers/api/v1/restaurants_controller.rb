@@ -18,6 +18,17 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
         end
     end
 
+    def create
+        @restaurant = Restaurant.new(restaurant_params)
+        @restaurant.user = current_user
+        authorize @restaurant
+        if @restaurant.save
+            render :show, status: 201
+        else
+            render_error
+        end
+    end
+
     private
 
     def set_restaurant

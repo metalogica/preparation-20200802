@@ -18,4 +18,10 @@ class RestaurantPolicy < ApplicationPolicy
     record.user == user
     # @restaurant.user == user
   end
+
+  def create?
+    # users with an API key can create restaurants
+    user.present?
+    # current_user.present?
+  end
 end
